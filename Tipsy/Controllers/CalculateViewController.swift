@@ -43,16 +43,19 @@ class CalculateViewController: UIViewController {
             twentyPctButton.isSelected = false
             tipPercent = 0.1
         }
+        billTextField.endEditing(true)
     }
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
         splitNumber = Int(sender.value)
         splitNumberLabel.text = String(splitNumber)
+        billTextField.endEditing(true)
     }
     
     @IBAction func calculatePressed(_ sender: UIButton) {
         print(tipPercent)
         print(splitNumber)
+        print(billTextField.text!)
     }
 }
 
