@@ -62,5 +62,14 @@ class CalculateViewController: UIViewController {
         
         self.performSegue(withIdentifier: "goToResult", sender: self)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToResult"{
+            let destinationVC = segue.destination as! ResultsViewController
+            destinationVC.calculatedResult = toReturn
+            destinationVC.numberOfPeople = String(splitNumber)
+            destinationVC.tipPercentage = String(tipPercent * 100)+"%"
+        }
+    }
 }
 
