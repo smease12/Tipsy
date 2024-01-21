@@ -14,6 +14,8 @@ class CalculateViewController: UIViewController {
     @IBOutlet weak var tenPctButton: UIButton!
     @IBOutlet weak var twentyPctButton: UIButton!
     @IBOutlet weak var splitNumberLabel: UILabel!
+    
+    var tipPercent : Int = 0
 
     @IBAction func tipChanged(_ sender: UIButton) {
         let pctSelected = sender.title(for: .normal)
@@ -23,18 +25,22 @@ class CalculateViewController: UIViewController {
             zeroPctButton.isSelected = true
             tenPctButton.isSelected = false
             twentyPctButton.isSelected = false
-        case "10%": 
+            tipPercent = 0
+        case "10%":
             zeroPctButton.isSelected = false
             tenPctButton.isSelected = true
             twentyPctButton.isSelected = false
-        case "20%": 
+            tipPercent = 10
+        case "20%":
             zeroPctButton.isSelected = false
             tenPctButton.isSelected = false
             twentyPctButton.isSelected = true
-        default: 
-            zeroPctButton.isSelected = false
+            tipPercent = 20
+        default:
+            zeroPctButton.isSelected = true
             tenPctButton.isSelected = false
             twentyPctButton.isSelected = false
+            tipPercent = 0
         }
     }
     
@@ -42,6 +48,7 @@ class CalculateViewController: UIViewController {
     }
     
     @IBAction func calculatePressed(_ sender: UIButton) {
+        print(tipPercent)
     }
 }
 
