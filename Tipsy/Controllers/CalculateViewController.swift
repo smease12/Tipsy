@@ -18,6 +18,7 @@ class CalculateViewController: UIViewController {
     var tipPercent : Float = 0.1
     var splitNumber : Int = 2
     var bill : Float = 0.0
+    var toReturn: String = ""
 
     @IBAction func tipChanged(_ sender: UIButton) {
         let pctSelected = sender.title(for: .normal)
@@ -54,14 +55,12 @@ class CalculateViewController: UIViewController {
     }
     
     @IBAction func calculatePressed(_ sender: UIButton) {
-        print(tipPercent)
-        print(splitNumber)
-        print(billTextField.text!)
         bill = Float(billTextField.text!)!
         let tip = tipPercent * bill
-        print(tip+bill)
         let totalPerPerson = Float(tip + bill) / Float(splitNumber)
-        print(String(format: "%.2f", totalPerPerson))
+        toReturn = String(format: "%.2f", totalPerPerson)
+        
+        self.performSegue(withIdentifier: "goToResult", sender: self)
     }
 }
 
